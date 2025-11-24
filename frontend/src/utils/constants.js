@@ -1,5 +1,5 @@
 // API Base URL - automatically uses environment variable
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://pharma-prospective-site.vercel.app';
 
 export const PRODUCT_TYPES = {
   REPORT: 'report',
