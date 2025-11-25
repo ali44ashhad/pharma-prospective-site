@@ -34,7 +34,7 @@ const Header = () => {
 
             <div className="leading-tight">
               <h1 className="text-lg font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
-                ProductAccess
+                Pharma Prospective
               </h1>
               <p className="text-xs text-gray-300">Secure Research Portal</p>
             </div>
