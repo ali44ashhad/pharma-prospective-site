@@ -132,19 +132,33 @@ const Home = () => {
     <div className="min-h-screen relative text-white">
       {/* 3D Background Canvas (subtle, non-interactive) */}
       <div className="fixed inset-0 z-0 opacity-20 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 8] }}>
+        <Canvas 
+          camera={{ position: [0, 0, 8] }}
+          gl={{ 
+            preserveDrawingBuffer: true,
+            antialias: true,
+            powerPreference: 'high-performance'
+          }}
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener('webglcontextlost', (e) => {
+              e.preventDefault();
+              console.log('WebGL context lost, attempting recovery...');
+            });
+            gl.domElement.addEventListener('webglcontextrestored', () => {
+              console.log('WebGL context restored');
+            });
+          }}
+        >
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} intensity={1} />
           <Molecule3D />
-          {/* If you have FloatingParticles component, uncomment below and import it */}
-          {/* <FloatingParticles count={30} /> */}
           <OrbitControls enableZoom={false} enablePan={false} autoRotate />
         </Canvas>
       </div>
 
       {/* Hero Section */}
       <section className=" ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-7xl mx-auto px-4 py-20">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
               <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -198,7 +212,7 @@ const Home = () => {
 
       {/* Products / Features Section */}
       <section className="py-20 bg-transparent relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Products</h2>
             <p className="text-xl text-cyan-200 max-w-2xl mx-auto">
@@ -242,7 +256,7 @@ const Home = () => {
 
       {/* How It Works */}
       <section className="py-20 bg-gray-900/20 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How It Works</h2>
           </div>

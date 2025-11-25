@@ -66,8 +66,8 @@ const DataProtection = () => {
 
   return (
     <div>
-      <section className="relative py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -93,8 +93,8 @@ const DataProtection = () => {
       </section>
 
       {/* Protection Measures */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -130,8 +130,8 @@ const DataProtection = () => {
       </section>
 
       {/* Data Rights */}
-      <section className="py-16 px-6 bg-white/5">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 bg-white/5">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -161,8 +161,8 @@ const DataProtection = () => {
       </section>
 
       {/* Compliance Section */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

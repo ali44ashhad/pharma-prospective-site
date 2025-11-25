@@ -215,18 +215,18 @@ const Status = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-16 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-between mb-8"
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8"
           >
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
                 System Status
               </h1>
-              <p className="text-xl text-gray-300">
+              <p className="text-base sm:text-xl text-gray-300">
                 Real-time status of Pharma Research Platform services
               </p>
             </div>
@@ -236,7 +236,7 @@ const Status = () => {
               whileTap={{ scale: 0.95 }}
               onClick={refreshStatus}
               disabled={loading}
-              className="flex items-center space-x-2 px-4 py-2 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-xl hover:bg-cyan-500/30 transition-colors disabled:opacity-50"
+              className="flex items-center justify-center space-x-2 px-4 py-2 bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 rounded-xl hover:bg-cyan-500/30 transition-colors disabled:opacity-50 w-full sm:w-auto"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
               <span>Refresh</span>
@@ -248,21 +248,23 @@ const Status = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10 mb-8"
+            className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10 mb-8"
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                {getStatusIcon(overallStatus)}
-                <div>
-                  <h2 className="text-2xl font-semibold text-white">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
+                <div className="flex-shrink-0">
+                  {getStatusIcon(overallStatus)}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-white truncate">
                     All Systems {overallStatus === 'operational' ? 'Operational' : 'Experiencing Issues'}
                   </h2>
-                  <p className="text-gray-400">
+                  <p className="text-sm sm:text-base text-gray-400">
                     Last updated: {lastUpdated.toLocaleTimeString()}
                   </p>
                 </div>
               </div>
-              <div className={`px-4 py-2 rounded-full border ${getStatusColor(overallStatus)}`}>
+              <div className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border text-sm sm:text-base ${getStatusColor(overallStatus)} text-center flex-shrink-0`}>
                 {overallStatus.toUpperCase()}
               </div>
             </div>
@@ -270,7 +272,7 @@ const Status = () => {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-6 pb-20">
+      <div className="max-w-7xl mx-auto px-4 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Systems Status */}
           <motion.div
@@ -313,35 +315,35 @@ const Status = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all group"
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-cyan-500/30 transition-all group"
                       >
-                        <div className="flex items-center space-x-4">
-                          <div className="w-10 h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                            {system.name.includes('Database') && <Database className="w-5 h-5 text-cyan-400" />}
-                            {system.name.includes('API') && <Cloud className="w-5 h-5 text-cyan-400" />}
-                            {system.name.includes('Security') && <Shield className="w-5 h-5 text-cyan-400" />}
-                            {system.name.includes('Web') && <Server className="w-5 h-5 text-cyan-400" />}
-                            {system.name.includes('File') && <Database className="w-5 h-5 text-cyan-400" />}
-                            {system.name.includes('Authentication') && <Shield className="w-5 h-5 text-cyan-400" />}
+                        <div className="flex items-start sm:items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
+                          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-cyan-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                            {system.name.includes('Database') && <Database className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
+                            {system.name.includes('API') && <Cloud className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
+                            {system.name.includes('Security') && <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
+                            {system.name.includes('Web') && <Server className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
+                            {system.name.includes('File') && <Database className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
+                            {system.name.includes('Authentication') && <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />}
                           </div>
-                          <div>
-                            <h3 className="text-white font-semibold">{system.name}</h3>
-                            <p className="text-gray-400 text-sm">{system.description}</p>
-                            <div className="flex items-center space-x-4 mt-1 text-xs text-gray-500">
-                              <span>Response: {system.responseTime}</span>
-                              <span>Uptime: {formatUptime(system.uptime)}</span>
-                              <span>Last incident: {system.lastIncident}</span>
+                          <div className="min-w-0 flex-1">
+                            <h3 className="text-white font-semibold text-sm sm:text-base">{system.name}</h3>
+                            <p className="text-gray-400 text-xs sm:text-sm truncate">{system.description}</p>
+                            <div className="flex flex-wrap items-center gap-x-2 sm:gap-x-4 gap-y-1 mt-1 text-xs text-gray-500">
+                              <span className="whitespace-nowrap">Response: {system.responseTime}</span>
+                              <span className="whitespace-nowrap">Uptime: {formatUptime(system.uptime)}</span>
+                              <span className="whitespace-nowrap">Last: {system.lastIncident}</span>
                             </div>
                           </div>
                         </div>
                         
-                        <div className="flex items-center space-x-3">
-                          <div className="text-right">
-                            <div className={`px-3 py-1 rounded-full border text-sm ${getStatusColor(system.status)}`}>
-                              {system.status.charAt(0).toUpperCase() + system.status.slice(1)}
-                            </div>
+                        <div className="flex items-center justify-between sm:justify-end space-x-3 flex-shrink-0">
+                          <div className={`px-2 sm:px-3 py-1 rounded-full border text-xs sm:text-sm ${getStatusColor(system.status)} flex-1 sm:flex-initial text-center`}>
+                            {system.status.charAt(0).toUpperCase() + system.status.slice(1)}
                           </div>
-                          {getStatusIcon(system.status)}
+                          <div className="flex-shrink-0">
+                            {getStatusIcon(system.status)}
+                          </div>
                         </div>
                       </motion.div>
                     ))}
@@ -490,32 +492,7 @@ const Status = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Subscribe to Updates */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="mt-12 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 backdrop-blur-md rounded-2xl p-8 border border-cyan-500/20 text-center"
-        >
-          <h3 className="text-2xl font-semibold text-white mb-4">Stay Updated</h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Get notified about system status changes, maintenance windows, and incident updates.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
-            />
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-cyan-500 text-white rounded-xl hover:bg-cyan-600 transition-colors whitespace-nowrap"
-            >
-              Subscribe
-            </motion.button>
-          </div>
-        </motion.div>
+ 
       </div> 
     </div>
   );

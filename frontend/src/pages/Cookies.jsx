@@ -51,17 +51,17 @@ const Cookies = () => {
 
   return (
     <div>
-      <section className="relative py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-center space-x-4 mb-6"
+            className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-6"
           >
-            <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center">
-              <Cookie className="w-8 h-8 text-white" />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center">
+              <Cookie className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text">
               Cookie Policy
             </h1>
           </motion.div>
@@ -70,7 +70,7 @@ const Cookies = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-300"
+            className="text-base sm:text-lg md:text-xl text-gray-300"
           >
             How we use cookies to enhance your experience
           </motion.p>
@@ -78,8 +78,8 @@ const Cookies = () => {
       </section>
 
       {/* Content */}
-      <section className="py-12 px-6">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -111,19 +111,19 @@ const Cookies = () => {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10"
+                  className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 bg-white/5 rounded-xl border border-white/10"
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center">
-                      <cookie.icon className="w-6 h-6 text-amber-400" />
+                  <div className="flex items-start sm:items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <cookie.icon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
                     </div>
-                    <div>
-                      <h3 className="text-white font-semibold">{cookie.title}</h3>
-                      <p className="text-gray-400 text-sm">{cookie.description}</p>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-sm sm:text-base text-white font-semibold">{cookie.title}</h3>
+                      <p className="text-xs sm:text-sm text-gray-400">{cookie.description}</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-center sm:justify-end flex-shrink-0">
                     {cookie.alwaysActive ? (
                       <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">
                         Always Active

@@ -92,8 +92,8 @@ const Team = () => {
     <div>
       
       {/* Hero Section */}
-      <section className="relative py-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,8 +113,8 @@ const Team = () => {
       </section>
 
       {/* Departments */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -150,8 +150,8 @@ const Team = () => {
       </section>
 
       {/* Team Grid */}
-      <section className="py-16 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -220,8 +220,8 @@ const Team = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}

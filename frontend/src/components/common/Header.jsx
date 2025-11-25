@@ -1,96 +1,4 @@
-// import React from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { useAuth } from '../../contexts/AuthContext';
-
-// const Header = () => {
-//   const { user, isAuthenticated, logout } = useAuth();
-//   const navigate = useNavigate();
-
-//   const handleLogout = () => {
-//     logout();
-//     navigate('/');
-//   };
-
-//   return (
-//     <header className="bg-white shadow-sm border-b border-gray-200">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between items-center h-16">
-//           {/* Logo */}
-//           <Link to="/" className="flex items-center space-x-2">
-//             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-//               <span className="text-white font-bold text-sm">P</span>
-//             </div>
-//             <span className="text-xl font-bold text-gray-900">ProductAccess</span>
-//           </Link>
-
-//           {/* Navigation */}
-//           <nav className="hidden md:flex items-center space-x-8">
-//             <Link 
-//               to="/products" 
-//               className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-//             >
-//               Products
-//             </Link>
-            
-//             {isAuthenticated ? (
-//               <>
-//                 {user?.role === 'admin' ? (
-//                   <Link 
-//                     to="/admin" 
-//                     className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-//                   >
-//                     Admin Dashboard
-//                   </Link>
-//                 ) : (
-//                   <Link 
-//                     to="/dashboard" 
-//                     className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-//                   >
-//                     Dashboard
-//                   </Link>
-//                 )}
-//                 <div className="flex items-center space-x-4">
-//                   <span className="text-gray-700">Welcome, {user?.name}</span>
-//                   <button
-//                     onClick={handleLogout}
-//                     className="btn btn-secondary text-sm"
-//                   >
-//                     Logout
-//                   </button>
-//                 </div>
-//               </>
-//             ) : (
-//               <div className="flex items-center space-x-4">
-//                 <Link 
-//                   to="/login" 
-//                   className="text-gray-700 hover:text-primary-600 font-medium transition-colors"
-//                 >
-//                   Login
-//                 </Link>
-//                 <Link 
-//                   to="/admin/login" 
-//                   className="btn btn-primary text-sm"
-//                 >
-//                   Admin Login
-//                 </Link>
-//               </div>
-//             )}
-//           </nav>
-
-//           {/* Mobile menu button */}
-//           <button className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
-//             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-//             </svg>
-//           </button>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header; 
-
+ 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Beaker, User, LogOut, Menu, X } from 'lucide-react';
@@ -113,7 +21,7 @@ const Header = () => {
       animate={{ y: 0 }}
       className="sticky top-0 z-50 bg-white/6 backdrop-blur-md border-b border-white/10"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">

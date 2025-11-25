@@ -47,8 +47,8 @@ const Terms = () => {
     <div>
       
       {/* Hero Section */}
-      <section className="relative py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,8 +74,8 @@ const Terms = () => {
       </section>
 
       {/* Content */}
-      <section className="py-12 px-6">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,16 +87,16 @@ const Terms = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {sections.map((section, index) => (
               <motion.div
                 key={section.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/5 rounded-2xl p-6 border border-white/10"
+                className="bg-white/5 rounded-2xl p-5 sm:p-6 border border-white/10"
               >
-                <h3 className="text-xl font-semibold text-cyan-400 mb-4">
+                <h3 className="text-lg sm:text-xl font-semibold text-cyan-400 mb-3 sm:mb-4">
                   {section.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed">

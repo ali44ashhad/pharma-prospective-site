@@ -38,8 +38,8 @@ const Privacy = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,8 +65,8 @@ const Privacy = () => {
       </section>
 
       {/* Content */}
-      <section className="py-12 px-6">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -80,26 +80,26 @@ const Privacy = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {privacySections.map((section, index) => (
               <motion.div
                 key={section.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-green-500/30 transition-all"
+                className="bg-white/5 rounded-2xl p-5 sm:p-6 border border-white/10 hover:border-green-500/30 transition-all"
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-3 sm:space-y-0 sm:space-x-4 text-center sm:text-left">
                   {section.icon && (
-                    <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <section.icon className="w-6 h-6 text-green-400" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <section.icon className="w-5 h-5 sm:w-6 sm:h-6 text-green-400" />
                     </div>
                   )}
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-4">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">
                       {section.title}
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                       {section.content}
                     </p>
                   </div>

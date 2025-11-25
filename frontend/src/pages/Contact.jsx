@@ -61,8 +61,8 @@ const Contact = () => {
   return (
     <div>
       {/* Hero */}
-      <section className="relative py-12 md:py-20 px-4 md:px-6">
-        <div className="max-w-6xl mx-auto text-center">
+      <section className="relative py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6 pb-12 md:pb-20">
+      <div className="max-w-7xl mx-auto px-4 pb-12 md:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Contact Information */}
           <motion.div
@@ -129,6 +129,7 @@ const Contact = () => {
                     <input
                       type="text"
                       name="name"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
@@ -141,6 +142,7 @@ const Contact = () => {
                     <input
                       type="email"
                       name="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
@@ -156,6 +158,7 @@ const Contact = () => {
                     <input
                       type="text"
                       name="company"
+                      autoComplete="organization"
                       value={formData.company}
                       onChange={handleChange}
                       className="w-full px-3 md:px-4 py-2 md:py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all text-sm md:text-base"

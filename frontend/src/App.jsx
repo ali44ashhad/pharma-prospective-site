@@ -113,7 +113,7 @@ function App() {
         <ScrollToTop/>
          <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white relative">
           <Header/>
-          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> 
+          <main className="max-w-7xl mx-auto px-2 py-8"> 
         {/* <div className="min-h-screen bg-gray-50 flex flex-col">
           <Header />
           <main className="flex-1"> */}

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import LoadingSpinner from '../common/LoadingSpinner';
+import { useAuth } from '../../contexts/AuthContext'; 
 
 const AuthWrapper = ({ children, requireAuth = false, adminOnly = false }) => {
   const { isAuthenticated, user, loading, checkAuthStatus } = useAuth();
@@ -11,9 +10,7 @@ const AuthWrapper = ({ children, requireAuth = false, adminOnly = false }) => {
     }
   }, [loading, checkAuthStatus]);
 
-  // if (loading) {
-  //   return <LoadingSpinner />;
-  // }
+ 
   if (loading) {
     return (
       <div className="rounded-2xl bg-white/5 p-6">

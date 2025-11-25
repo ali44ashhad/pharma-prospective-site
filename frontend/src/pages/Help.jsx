@@ -96,36 +96,14 @@ const Help = () => {
       }
     ]
   };
-
-  const popularArticles = [
-    {
-      title: 'Setting Up Two-Factor Authentication',
-      category: 'Security',
-      reads: '1.2k'
-    },
-    {
-      title: 'Managing Team Permissions',
-      category: 'Collaboration',
-      reads: '890'
-    },
-    {
-      title: 'Uploading Large Research Papers',
-      category: 'Uploading',
-      reads: '756'
-    },
-    {
-      title: 'Understanding Confidentiality Levels',
-      category: 'Security',
-      reads: '643'
-    }
-  ];
+ 
 
   const filteredFaqs = faqs[activeCategory] || [];
 
   return (
     <div>
-      <section className="relative py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,7 +139,7 @@ const Help = () => {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 pb-20">
+      <div className="max-w-7xl mx-auto px-4 pb-20">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar */}
           <motion.div
@@ -213,32 +191,7 @@ const Help = () => {
                 </div>
               </div>
             </div>
-
-            {/* Popular Articles */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-6 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/10"
-            >
-              <h3 className="text-lg font-semibold text-white mb-4">Popular Articles</h3>
-              <div className="space-y-3">
-                {popularArticles.map((article, index) => (
-                  <div
-                    key={index}
-                    className="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                  >
-                    <div className="text-white text-sm font-medium mb-1">
-                      {article.title}
-                    </div>
-                    <div className="flex justify-between items-center text-xs text-gray-400">
-                      <span>{article.category}</span>
-                      <span>{article.reads} reads</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+ 
           </motion.div>
 
           {/* Main Content */}
