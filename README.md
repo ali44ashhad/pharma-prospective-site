@@ -201,4 +201,6 @@ Before deploying to production:
 
 ---
 
-Made with ❤️ | Deployed on Vercel 🚀
+Made with ❤️ by **FNA Marketing Solution**  
+🔗 https://www.fnamarketingsolutions.com/
+
