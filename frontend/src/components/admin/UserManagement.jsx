@@ -131,7 +131,8 @@ import React, { useState, useEffect } from 'react';
 import { adminService } from '../../services/adminService';
 import LoadingSpinner from '../common/LoadingSpinner';
 import { formatDate } from '../../utils/formatters';
-import { FaEnvelope, FaPhone, FaCalendar, FaKey } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaCalendar, FaKey, FaTrash } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -149,6 +150,21 @@ const UserManagement = () => {
       console.error('Error fetching users:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDeleteUser = async (userId, userName) => {
+    if (!window.confirm(`Are you sure you want to delete user "${userName}"? This will remove all their permissions and access requests.`)) {
+      return;
+    }
+
+    try {
+      await adminService.deleteUser(userId);
+      toast.success('User deleted successfully');
+      fetchUsers(); // Refresh the list
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      toast.error('Failed to delete user');
     }
   };
 
@@ -200,6 +216,9 @@ if (loading) {
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-cyan-200 uppercase tracking-wider">
                   Created
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-cyan-200 uppercase tracking-wider">
+                  Actions
                 </th>
               </tr>
             </thead>
@@ -253,6 +272,16 @@ if (loading) {
                       <FaCalendar className="w-3 h-3 text-cyan-200" />
                       <span>{formatDate(user.createdAt)}</span>
                     </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <button
+                      onClick={() => handleDeleteUser(user._id, user.name)}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-lg transition"
+                      title="Delete user"
+                    >
+                      <FaTrash className="w-3 h-3" />
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

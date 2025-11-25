@@ -117,7 +117,7 @@ import { Molecule3D } from '../components/common/Molecule3D';
 
 
 const Home = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -182,12 +182,12 @@ const Home = () => {
                   </Link>
                 </>
               ) : (
-                <Link to="/dashboard" className="inline-block">
+                <Link to={user?.role === 'admin' ? '/admin' : '/dashboard'} className="inline-block">
                   <button
                     className="px-8 py-3 rounded-2xl font-semibold bg-white text-slate-900 shadow-2xl shadow-cyan-500/20 transform-gpu hover:-translate-y-1 transition-transform"
                     type="button"
                   >
-                    Go to Dashboard
+                    {user?.role === 'admin' ? 'Go to Admin Panel' : 'Go to Dashboard'}
                   </button>
                 </Link>
               )}

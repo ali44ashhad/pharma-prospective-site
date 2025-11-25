@@ -88,5 +88,10 @@ export const adminService = {
   async deleteProductFile(fileId) {
     const response = await api.delete(`/api/admin/product-files/${fileId}`);
     return response.data;
+  },
+
+  async deleteUser(userId) {
+    const response = await api.delete(`/api/admin/users/${userId}`);
+    return response.data;
   }
 };

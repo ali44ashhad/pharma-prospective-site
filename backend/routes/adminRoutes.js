@@ -14,6 +14,7 @@ const { uploadPDF, handleCloudinaryUpload } = require('../middleware/uploadMiddl
 router.post('/users', authenticateAdmin, adminController.createUser);
 router.get('/users', authenticateAdmin, adminController.getAllUsers);
 router.get('/users/:userId/permissions', authenticateAdmin, adminController.getUserPermissions);
+router.delete('/users/:userId', authenticateAdmin, adminController.deleteUser);
 
 /* ---------------------------
    Product File Management (Admin)

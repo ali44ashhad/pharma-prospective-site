@@ -1,164 +1,60 @@
-// import React, { useState } from 'react';
-// import { productService } from '../../services/productService';
-// import AccessRequestForm from './AccessRequestForm';
-// import Modal from '../common/Modal';
-// import { FaLock, FaEye } from 'react-icons/fa';
-
-// const CountryList = ({ countries, productId }) => {
-//   const [selectedCountry, setSelectedCountry] = useState(null);
-//   const [productFile, setProductFile] = useState(null);
-//   const [showRequestForm, setShowRequestForm] = useState(false);
-//   const [loading, setLoading] = useState(false);
-
-//   const handleCountryClick = async (country) => {
-//     setLoading(true);
-//     try {
-//       const fileData = await productService.getProductFile(country.product_file_id);
-//       setProductFile(fileData);
-//       setSelectedCountry(country);
-//     } catch (error) {
-//       console.error('Error fetching product file:', error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const handleRequestAccess = () => {
-//     setSelectedCountry(null);
-//     setShowRequestForm(true);
-//   };
-
-//   const handleRequestSuccess = () => {
-//     setShowRequestForm(false);
-//     setProductFile(null);
-//   };
-
-//   return (
-//     <>
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-//         {countries.map((country) => (
-//           <div
-//             key={country._id}
-//             className="card p-4 cursor-pointer hover:shadow-card-hover transition-all duration-200"
-//             onClick={() => handleCountryClick(country)}
-//           >
-//             <div className="flex items-center justify-between">
-//               <div className="flex items-center space-x-3">
-//                 <div className="text-2xl">{country.flag || '🏳️'}</div>
-//                 <div>
-//                   <h3 className="font-semibold text-gray-900">{country.name}</h3>
-//                   <p className="text-sm text-gray-600">{country.code}</p>
-//                 </div>
-//               </div>
-//               <FaLock className="text-gray-400" />
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* PDF Preview Modal */}
-//       {selectedCountry && productFile && !showRequestForm && (
-//         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center p-4">
-//           <div className="bg-white rounded-lg max-w-2xl w-full p-6">
-//             <h2 className="text-2xl font-bold mb-4">Document Preview</h2>
-            
-//             {/* Locked Document Visual */}
-//             <div className="text-center py-8 bg-gray-50 rounded-lg mb-4">
-//               <div className="inline-flex items-center justify-center w-24 h-24 bg-blue-100 rounded-full mb-4">
-//                 <FaLock className="text-blue-600 text-4xl" />
-//               </div>
-//               <h3 className="text-xl font-bold text-gray-900 mb-2">Document Locked</h3>
-//               <p className="text-gray-600 mb-1">
-//                 {productFile.product_id?.name} - {productFile.country_id?.name}
-//               </p>
-//               <p className="text-sm text-gray-500">
-//                 {productFile.file_name}
-//               </p>
-//             </div>
-
-//             {/* Info Box */}
-//             <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 mb-4">
-//               <p className="text-sm text-blue-800 text-center">
-//                 📋 Request access to view this document. Admin will review your request and grant permission.
-//               </p>
-//             </div>
-
-//             {/* Action Buttons */}
-//             <div className="flex gap-3">
-//               <button
-//                 onClick={() => {
-//                   setSelectedCountry(null);
-//                   setProductFile(null);
-//                 }}
-//                 className="flex-1 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200 transition-all"
-//               >
-//                 Cancel
-//               </button>
-//               <button
-//                 onClick={handleRequestAccess}
-//                 className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg"
-//               >
-//                 🔓 Request Access
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-
-//       {/* Access Request Form Modal */}
-//       {showRequestForm && productFile && (
-//         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-//           <div className="bg-white rounded-lg max-w-lg w-full p-6">
-//             <div className="flex justify-between items-center mb-6">
-//               <h2 className="text-2xl font-bold text-gray-900">Request Document Access</h2>
-//               <button
-//                 onClick={() => {
-//                   setShowRequestForm(false);
-//                   setProductFile(null);
-//                 }}
-//                 className="text-gray-400 hover:text-gray-600 text-2xl"
-//               >
-//                 ×
-//               </button>
-//             </div>
-            
-//             <AccessRequestForm
-//               productFile={productFile}
-//               onClose={() => {
-//                 setShowRequestForm(false);
-//                 setProductFile(null);
-//               }}
-//               onSuccess={handleRequestSuccess}
-//             />
-//           </div>
-//         </div>
-//       )}
-//     </>
-//   );
-// };
-
-// export default CountryList;
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { productService } from '../../services/productService';
+import { userService } from '../../services/userService';
+import { useAuth } from '../../contexts/AuthContext';
 import AccessRequestForm from './AccessRequestForm';
+import PDFViewer from '../common/PDFViewer';
 import { FaLock, FaEye } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const CountryList = ({ countries, productId }) => {
+  const { isAuthenticated, user } = useAuth();
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [productFile, setProductFile] = useState(null);
   const [showRequestForm, setShowRequestForm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [userPermissions, setUserPermissions] = useState([]);
+  const [selectedPdf, setSelectedPdf] = useState(null);
+
+  useEffect(() => {
+    if (isAuthenticated && user?.role !== 'admin') {
+      fetchUserPermissions();
+    }
+  }, [isAuthenticated, user]);
+
+  const fetchUserPermissions = async () => {
+    try {
+      const permissions = await userService.getUserPermissions();
+      setUserPermissions(permissions);
+    } catch (error) {
+      console.error('Error fetching permissions:', error);
+    }
+  };
+
+  const hasAccess = (productFileId) => {
+    return userPermissions.some(
+      (permission) => permission.product_file_id?._id === productFileId
+    );
+  };
 
   const handleCountryClick = async (country) => {
     setLoading(true);
     try {
       const fileData = await productService.getProductFile(country.product_file_id);
       setProductFile(fileData);
-      setSelectedCountry(country);
+      
+      // Check if user has access
+      if (isAuthenticated && user?.role !== 'admin' && hasAccess(country.product_file_id)) {
+        // User has access - open PDF directly
+        const pdfData = await userService.getSecurePdfUrl(country.product_file_id);
+        setSelectedPdf({ ...pdfData, fileName: fileData.file_name });
+      } else {
+        // No access - show locked preview
+        setSelectedCountry(country);
+      }
     } catch (error) {
       console.error('Error fetching product file:', error);
+      toast.error('Failed to load document');
     } finally {
       setLoading(false);
     }
@@ -319,6 +215,15 @@ const CountryList = ({ countries, productId }) => {
         <div className="fixed inset-0 z-60 flex items-center justify-center pointer-events-none">
           <div className="w-12 h-12 border-t-4 border-cyan-400 rounded-full animate-spin" />
         </div>
+      )}
+
+      {/* PDF Viewer */}
+      {selectedPdf && (
+        <PDFViewer
+          pdfUrl={selectedPdf.secure_url}
+          fileName={selectedPdf.fileName}
+          onClose={() => setSelectedPdf(null)}
+        />
       )}
     </>
   );
