@@ -28,6 +28,7 @@ import DataProtection from './pages/DataProtection';
 import Help from './pages/Help';
 import Status from './pages/Status';
 import ScrollToTop from './components/common/ScrollToTop';
+import PwaInstallPopup from './components/common/PwaInstallPopup';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <ScrollToTop/>
          <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white relative">
           <Header/>
+            <PwaInstallPopup />
           <main className="max-w-7xl mx-auto px-2 py-8"> 
    
             <Routes>
