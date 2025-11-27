@@ -61,73 +61,26 @@ const PwaInstallPopup = () => {
   if (!showPopup) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        backgroundColor: "rgba(0,0,0,0.4)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 9999,
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "#fff",
-          padding: "16px 20px",
-          borderRadius: "8px",
-          maxWidth: "320px",
-          width: "90%",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-        }}
-      >
-        <h3 style={{ marginTop: 0, marginBottom: "8px", color: "#000" }}>
-          Download the app
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-[9999] px-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-sm w-full p-6">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Download the App
         </h3>
-        <p
-          style={{
-            marginTop: 0,
-            marginBottom: "16px",
-            fontSize: "14px",
-            color: "#111",
-          }}
-        >
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
           Fast access ke liye abhi install karein aur home screen se open karein.
         </p>
-        <div
-          style={{
-            display: "flex",
-            gap: "8px",
-            justifyContent: "flex-end",
-            marginTop: "8px",
-          }}
-        >
+        <div className="flex gap-3 justify-end">
           <button
             onClick={handleClose}
-            style={{
-              padding: "6px 10px",
-              borderRadius: "4px",
-              border: "1px solid #ccc",
-              background: "#f5f5f5",
-              cursor: "pointer",
-            }}
+            className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
           >
             Not now
           </button>
           <button
             onClick={handleInstallClick}
-            style={{
-              padding: "6px 12px",
-              borderRadius: "4px",
-              border: "none",
-              background: "#1976d2",
-              color: "#fff",
-              cursor: "pointer",
-              fontWeight: 600,
-            }}
+            className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-colors"
           >
-            Download the app now
+            Install Now
           </button>
         </div>
       </div>

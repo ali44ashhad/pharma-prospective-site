@@ -11,24 +11,22 @@
 //     </BrowserRouter>
 //   </StrictMode>,
 // );
-
-
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
 
-// 👉 YE LINE ADD KARO
+// 👇 ADD THIS LINE
 import { registerSW } from 'virtual:pwa-register';
 
+// 👇 Register service worker (PWA)
 const updateSW = registerSW({
   onNeedRefresh() {
-    // optional: user ko batana ho to yaha kar sakte ho
-    console.log('New content available, please refresh.');
+    console.log('New content available, refresh to update.');
   },
   onOfflineReady() {
-    console.log('App ready to work offline');
+    console.log('App is ready to work offline.');
   },
 });
 
