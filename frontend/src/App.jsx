@@ -1,80 +1,3 @@
-// import React from 'react';
-// import { Routes, Route } from 'react-router-dom';
-// import { AuthProvider } from './contexts/AuthContext';
-// import Header from './components/common/Header';
-// import Footer from './components/common/Footer';
-// import ProtectedRoute from './components/common/ProtectedRoute';
-
-// // Pages
-// import Home from './pages/Home';
-// import Products from './pages/Products';
-// import ProductDetail from './pages/ProductDetail';
-// import Login from './pages/Login';
-// import Dashboard from './pages/Dashboard';
-// import AdminLogin from './pages/AdminLogin';
-// import AdminDashboard from './pages/AdminDashboard';
-// import NotFound from './pages/NotFound';
-
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// function App() {
-//   return (
-//     <AuthProvider>
-//       <div className="min-h-screen bg-gray-50 flex flex-col">
-//         <Header />
-//         <main className="flex-1">
-//           <Routes>
-//             {/* Public Routes */}
-//             <Route path="/" element={<Home />} />
-//             <Route path="/products" element={<Products />} />
-//             <Route path="/products/:productId" element={<ProductDetail />} />
-//             <Route path="/login" element={<Login />} />
-//             <Route path="/admin/login" element={<AdminLogin />} />
-
-//             {/* Protected User Routes */}
-//             <Route
-//               path="/dashboard"
-//               element={
-//                 <ProtectedRoute>
-//                   <Dashboard />
-//                 </ProtectedRoute>
-//               }
-//             />
-
-//             {/* Protected Admin Routes */}
-//             <Route
-//               path="/admin"
-//               element={
-//                 <ProtectedRoute adminOnly={true}>
-//                   <AdminDashboard />
-//                 </ProtectedRoute>
-//               }
-//             />
-
-//             {/* 404 Page */}
-//             <Route path="*" element={<NotFound />} />
-//           </Routes>
-//         </main>
-//         <Footer />
-//         <ToastContainer
-//           position="top-right"
-//           autoClose={5000}
-//           hideProgressBar={false}
-//           newestOnTop={false}
-//           closeOnClick
-//           rtl={false}
-//           pauseOnFocusLoss
-//           draggable
-//           pauseOnHover
-//         />
-//       </div>
-//     </AuthProvider>
-//   );
-// }
-
-// export default App;
-
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
@@ -114,9 +37,7 @@ function App() {
          <div className="min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white relative">
           <Header/>
           <main className="max-w-7xl mx-auto px-2 py-8"> 
-        {/* <div className="min-h-screen bg-gray-50 flex flex-col">
-          <Header />
-          <main className="flex-1"> */}
+   
             <Routes>
               {/* Public Routes */}
               <Route path="/" element={<Home />} /> 
