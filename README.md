@@ -201,6 +201,6 @@ Before deploying to production:
 
 ---
 
-Made with ❤️ by **FNA Marketing Solution**  
-🔗 https://www.fnamarketingsolutions.com/
+Made with ❤️ by [FNA Marketing Solution](https://www.fnamarketingsolutions.com/)
+
 
