@@ -5,29 +5,29 @@ const PwaInstallPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
+    console.log("PwaInstallPopup mounted");
+
     let timerId;
 
     const beforeInstallHandler = (e) => {
-      // Browser ka default mini bar mat dikhne do
+      console.log("beforeinstallprompt fired", e);
       e.preventDefault();
-      // Event ko store kar lo
       setDeferredPrompt(e);
 
-      // 10 second baad popup dikhana
       timerId = setTimeout(() => {
+        console.log("Showing popup after 10s");
         setShowPopup(true);
-      }, 10000); // 10000 ms = 10 seconds
+      }, 10000);
     };
 
-    window.addEventListener("beforeinstallprompt", beforeInstallHandler);
-
-    // Already installed hai to popup kabhi mat dikhao
     const appInstalledHandler = () => {
+      console.log("appinstalled event fired");
       setShowPopup(false);
       setDeferredPrompt(null);
       if (timerId) clearTimeout(timerId);
     };
 
+    window.addEventListener("beforeinstallprompt", beforeInstallHandler);
     window.addEventListener("appinstalled", appInstalledHandler);
 
     return () => {
@@ -39,30 +39,27 @@ const PwaInstallPopup = () => {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) {
-      // safety
+      console.log("No deferredPrompt, cannot show install");
       setShowPopup(false);
       return;
     }
 
-    // Browser ka install prompt show karo
     deferredPrompt.prompt();
 
     const { outcome } = await deferredPrompt.userChoice;
-    console.log("User install choice:", outcome); // 'accepted' ya 'dismissed'
+    console.log("User install choice:", outcome);
 
-    // Ek baar use ho gaya to clean up
     setDeferredPrompt(null);
     setShowPopup(false);
   };
 
   const handleClose = () => {
+    console.log("User closed popup");
     setShowPopup(false);
   };
 
-  // Agar installable nahi hai ya event nahi mila, kuch mat dikhayo
   if (!showPopup) return null;
 
-  // Simple popup UI
   return (
     <div
       style={{
@@ -85,8 +82,17 @@ const PwaInstallPopup = () => {
           boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
         }}
       >
-        <h3 style={{ marginTop: 0, marginBottom: "8px" }}>Download the app</h3>
-        <p style={{ marginTop: 0, marginBottom: "16px", fontSize: "14px" }}>
+        <h3 style={{ marginTop: 0, marginBottom: "8px", color: "#000" }}>
+          Download the app
+        </h3>
+        <p
+          style={{
+            marginTop: 0,
+            marginBottom: "16px",
+            fontSize: "14px",
+            color: "#111",
+          }}
+        >
           Fast access ke liye abhi install karein aur home screen se open karein.
         </p>
         <div
