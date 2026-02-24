@@ -137,7 +137,7 @@ const PDFViewer = ({ pdfUrl, fileName, onClose }) => {
               <label className="text-cyan-200 text-xs font-semibold uppercase tracking-wide mb-1 block">
                 Watermark
               </label>
-              <p className="text-white text-sm">PHARMA PROSPECTIVE</p>
+              <p className="text-white text-sm">PHARMA PERSPECTIVE</p>
             </div>
 
             <div className="pt-4 border-t border-cyan-500/20">
@@ -179,31 +179,31 @@ const PDFViewer = ({ pdfUrl, fileName, onClose }) => {
           <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden select-none" style={{ userSelect: 'none', WebkitUserSelect: 'none', msUserSelect: 'none' }}>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-[-45deg] opacity-10 select-none" style={{ userSelect: 'none' }}>
               <div className="text-4xl sm:text-6xl font-bold text-cyan-400 whitespace-nowrap select-none" style={{ userSelect: 'none' }}>
-                PHARMA PROSPECTIVE
+                PHARMA PERSPECTIVE
               </div>
             </div>
             
             <div className="absolute top-[20%] left-[35%] rotate-[-45deg] opacity-8 select-none hidden sm:block" style={{ userSelect: 'none' }}>
               <div className="text-4xl font-bold text-cyan-400 whitespace-nowrap select-none" style={{ userSelect: 'none' }}>
-                PHARMA PROSPECTIVE
+                  PHARMA PERSPECTIVE
               </div>
             </div>
             
             <div className="absolute bottom-[20%] right-[15%] rotate-[-45deg] opacity-8 select-none hidden sm:block" style={{ userSelect: 'none' }}>
               <div className="text-4xl font-bold text-cyan-400 whitespace-nowrap select-none" style={{ userSelect: 'none' }}>
-                PHARMA PROSPECTIVE
+                PHARMA PERSPECTIVE
               </div>
             </div>
             
             <div className="absolute top-[30%] right-[10%] rotate-[-45deg] opacity-6 select-none hidden md:block" style={{ userSelect: 'none' }}>
               <div className="text-3xl font-bold text-cyan-300 whitespace-nowrap select-none" style={{ userSelect: 'none' }}>
-                PHARMA PROSPECTIVE
+                PHARMA PERSPECTIVE
               </div>
             </div>
             
             <div className="absolute bottom-[30%] left-[35%] rotate-[-45deg] opacity-6 select-none hidden md:block" style={{ userSelect: 'none' }}>
               <div className="text-3xl font-bold text-cyan-300 whitespace-nowrap select-none" style={{ userSelect: 'none' }}>
-                PHARMA PROSPECTIVE
+                PHARMA PERSPECTIVE
               </div>
             </div>
           </div>
