@@ -179,17 +179,10 @@ const Header = () => {
                   <Link
                     to="/login"
                     onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 rounded-xl text-cyan-200 hover:text-white hover:bg-white/5 transition"
-                  >
-                    Login
+                    className="block   py-3 rounded-xl text-cyan-200 hover:text-white hover:bg-white/5 transition"
+                  >Login
                   </Link>
-                  <Link
-                    to="/admin/login"
-                    onClick={() => setMobileOpen(false)}
-                    className="block px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-center"
-                  >
-                    Admin Login
-                  </Link>
+                 
                 </div>
               )}
             </nav>
