@@ -98,12 +98,7 @@ const Header = () => {
                   Login
                 </Link>
 
-                <Link
-                  to="/admin/login"
-                  className="px-3 py-2 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium shadow-[0_8px_30px_-12px_rgba(42,174,230,0.25)] transition-transform hover:scale-[1.02]"
-                >
-                  Admin Login
-                </Link>
+                
               </div>
             )}
           </nav>

@@ -264,17 +264,11 @@ const Home = () => {
                     <button
                       className="px-8 py-3 rounded-2xl font-semibold bg-white text-slate-900 shadow-2xl shadow-cyan-500/20 transform-gpu hover:-translate-y-1 transition-transform"
                     >
-                      User Login
+                      Login
                     </button>
                   </Link>
 
-                  <Link to="/admin/login" className="inline-block">
-                    <button
-                      className="px-8 py-3 rounded-2xl font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-2xl shadow-cyan-500/25 transform-gpu hover:scale-[1.02] transition-transform"
-                    >
-                      Admin Login
-                    </button>
-                  </Link>
+                 
                 </>
               ) : (
                 <Link to={user?.role === 'admin' ? '/admin' : '/dashboard'} className="inline-block">
